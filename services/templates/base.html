@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cinema Service{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">CINEMA</h1>
+            </div>
+            <div class="sidebar-menu">
+                <a href="/" class="menu-item {% if request.endpoint == 'index' %}active{% endif %}">
+                    <i data-feather="home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/movies" class="menu-item {% if request.endpoint == 'movies' %}active{% endif %}">
+                    <i data-feather="film"></i>
+                    <span>Movies</span>
+                </a>
+                <a href="/showtimes" class="menu-item {% if request.endpoint == 'showtimes' %}active{% endif %}">
+                    <i data-feather="calendar"></i>
+                    <span>Showtimes</span>
+                </a>
+                <a href="/users" class="menu-item {% if request.endpoint == 'users' %}active{% endif %}">
+                    <i data-feather="users"></i>
+                    <span>Users</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h2>{% block page_title %}Dashboard{% endblock %}</h2>
+                </div>
+                <div class="user-menu">
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i data-feather="moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script>
+        feather.replace();
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const icon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.setAttribute('data-feather', 'sun');
+            } else {
+                icon.setAttribute('data-feather', 'moon');
+            }
+            feather.replace();
+        }
+    </script>
+</body>
+</html> 

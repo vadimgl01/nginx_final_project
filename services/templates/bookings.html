@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookings - Cinema Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo">CINEMA</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/movies">Movies</a>
+                <a href="/showtimes">Showtimes</a>
+                <a href="/users">Users</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <h1>Bookings for {{ username }}</h1>
+        <div class="bookings-container">
+            {% for date, movies in bookings.items() %}
+            <div class="booking-date">
+                <h2>{{ date[:4] }}-{{ date[4:6] }}-{{ date[6:] }}</h2>
+                <div class="booked-movies">
+                    {% for movie_id in movies %}
+                    <div class="booking-card">
+                        <span class="movie-id">{{ movie_id }}</span>
+                        <button class="cancel-btn">Cancel Booking</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Showtimes - Cinema Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo">CINEMA</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/movies">Movies</a>
+                <a href="/showtimes" class="active">Showtimes</a>
+                <a href="/users">Users</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <h1>Showtimes</h1>
+        <div class="showtimes-container">
+            {% for date, movies in showtimes.items() %}
+            <div class="date-section">
+                <h2>{{ date[:4] }}-{{ date[4:6] }}-{{ date[6:] }}</h2>
+                <div class="showtime-movies">
+                    {% for movie_id in movies %}
+                    <div class="showtime-card">
+                        <span class="movie-id">{{ movie_id }}</span>
+                        <button class="book-btn">Book Now</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html> 
