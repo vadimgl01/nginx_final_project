@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Movies - Cinema Service{% endblock %}
+{% block page_title %}Movie Catalog{% endblock %}
+
+{% block content %}
+<div class="movies-container">
+    <div class="filters">
+        <div class="search-bar">
+            <i data-feather="search"></i>
+            <input type="text" placeholder="Search movies..." id="movieSearch">
+        </div>
+        <div class="filter-options">
+            <select id="ratingFilter">
+                <option value="">Rating: All</option>
+                <option value="8">8+ Rating</option>
+                <option value="7">7+ Rating</option>
+                <option value="6">6+ Rating</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="movies-grid">
+        {% for id, movie in movies.items() %}
+        <div class="movie-card" data-rating="{{ movie.rating }}">
+            <div class="movie-poster">
+                <img src="{{ url_for('static', filename='placeholder.jpg') }}" alt="{{ movie.title }}">
+                <div class="movie-overlay">
+                    <button class="book-now">Book Now</button>
+                </div>
+            </div>
+            <div class="movie-info">
+                <h3>{{ movie.title }}</h3>
+                <p class="director">{{ movie.director }}</p>
+                <div class="rating">
+                    <div class="stars" style="--rating: {{ movie.rating/2 }}"></div>
+                    <span class="rating-number">{{ movie.rating }}/10</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

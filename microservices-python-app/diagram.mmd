@@ -1,0 +1,26 @@
+graph TD
+    Client[Client] --> Users[Users Service<br/>:5000]
+    Client --> Movies[Movies Service<br/>:5001]
+    Client --> Showtimes[Showtimes Service<br/>:5002]
+    Client --> Bookings[Bookings Service<br/>:5003]
+    
+    Users --> Movies
+    Users --> Bookings
+    Users --> Showtimes
+    
+    subgraph Databases
+        MoviesDB[(Movies DB<br/>JSON)]
+        ShowtimesDB[(Showtimes DB<br/>JSON)]
+        BookingsDB[(Bookings DB<br/>JSON)]
+        UsersDB[(Users DB<br/>JSON)]
+    end
+    
+    Movies --> MoviesDB
+    Showtimes --> ShowtimesDB
+    Bookings --> BookingsDB
+    Users --> UsersDB
+
+    style Users fill:#f9f,stroke:#333,stroke-width:2px
+    style Movies fill:#bbf,stroke:#333,stroke-width:2px
+    style Showtimes fill:#bfb,stroke:#333,stroke-width:2px
+    style Bookings fill:#fbb,stroke:#333,stroke-width:2px 
