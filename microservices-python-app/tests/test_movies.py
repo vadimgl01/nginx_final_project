@@ -4,12 +4,13 @@ import requests
 
 class TestMoviesService(unittest.TestCase):
     def setUp(self):
-        #self.url = "http://127.0.0.1:5001/movies"
-        self.url = "https://movie_theater.local/movies/"
+        self.url = "http://127.0.0.1:5001/movies"
+        #self.url = "https://movie_theater.local/movies/"
 
     def test_all_movie_records(self):
         """ Test /movies/<movieid> for all known movies"""
-        for movieid, expected in GOOD_RESPONSES.iteritems():
+        #for movieid, expected in GOOD_RESPONSES.iteritems():
+        for movieid, expected in GOOD_RESPONSES.items():
             expected['uri'] = "/movies/{}".format(movieid)
             reply = requests.get("{}/{}".format(self.url, movieid))
             actual_reply = reply.json()

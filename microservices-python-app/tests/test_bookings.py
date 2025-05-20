@@ -4,12 +4,12 @@ import requests
 
 class TestBookingService(unittest.TestCase):
     def setUp(self):
-        #self.url = "http://127.0.0.1:5003/bookings"
-        self.url = "https://movie_theater.local/bookings/"
+        self.url = "http://127.0.0.1:5003/bookings"
+        #self.url = "https://movie_theater.local/bookings/"
 
     def test_booking_records(self):
         """ Test /bookings/<username> for all known bookings"""
-        for date, expected in GOOD_RESPONSES.iteritems():
+        for date, expected in GOOD_RESPONSES.items():
             reply = requests.get("{}/{}".format(self.url, date))
             actual_reply = reply.json()
 

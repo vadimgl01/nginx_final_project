@@ -51,8 +51,8 @@ clean:
 	find . -type d -name ".pytest_cache" -exec rm -r {} +
 
 format:
-	black services/ tests/
+	black services/tests/
 
 lint:
-	flake8 services/ tests/
+	flake8 services/tests/
 

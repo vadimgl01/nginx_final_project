@@ -4,11 +4,11 @@ import requests
 
 class TestUserService(unittest.TestCase):
     def setUp(self):
-        #self.url = "http://127.0.0.1:5000/users"
-        self.url = "https://movie_theater.local/users/"
+        self.url = "http://127.0.0.1:5000/users"
+        #self.url = "https://movie_theater.local/users/"
 
     def test_user_records(self):
-        for username, expected in GOOD_RESPONSES.iteritems():
+        for username, expected in GOOD_RESPONSES.items():
             actual_reply = requests.get("{}/{}".format(self.url, username))
             actual_reply = actual_reply.json()
 

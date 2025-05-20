@@ -4,12 +4,12 @@ import requests
 
 class TestShowTimesService(unittest.TestCase):
     def setUp(self):
-        #self.url = "http://127.0.0.1:5002/showtimes"
-        self.url = "http://movie_theater.local/showtimes/"
+        self.url = "http://127.0.0.1:5002/showtimes"
+        #self.url = "http://movie_theater.local/showtimes/"
 
     def test_showtimes_records(self):
         """ Test /showtimes/<date> for all known showtimes"""
-        for date, expected in GOOD_RESPONSES.iteritems():
+        for date, expected in GOOD_RESPONSES.items():
             reply = requests.get("{}/{}".format(self.url, date))
             actual_reply = reply.json()
 
