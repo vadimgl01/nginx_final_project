@@ -316,3 +316,29 @@ WARNING:werkzeug: * Debugger is active!
  * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 125-176-570
  * Debugger PIN: 125-176-570
+python3 -m services.movies & \
+python3 -m services.showtimes & \
+python3 -m services.bookings & \
+python3 -m services.user & \
+python3 -m services.ui
+ * Serving Flask app 'bookings'
+ * Debug mode: on
+ * Serving Flask app 'showtimes'
+ * Debug mode: on
+ * Serving Flask app 'movies'
+ * Debug mode: on
+Address already in use
+Port 5003 is in use by another program. Either identify and stop that program, or start the server with a different port.
+Address already in use
+Port 5002 is in use by another program. Either identify and stop that program, or start the server with a different port.
+Address already in use
+Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.
+ * Serving Flask app 'user'
+ * Debug mode: on
+ * Serving Flask app 'ui'
+ * Debug mode: on
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+Address already in use
+Port 5004 is in use by another program. Either identify and stop that program, or start the server with a different port.
+make: *** [makefile:35: run-all] Error 1
