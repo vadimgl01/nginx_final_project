@@ -205,3 +205,59 @@ make: *** [makefile:35: run-all] Error 1
  * Debugger PIN: 125-176-570
  * Debugger is active!
  * Debugger PIN: 125-176-570
+python3 -m services.movies & \
+python3 -m services.showtimes & \
+python3 -m services.bookings & \
+python3 -m services.user & \
+python3 -m services.ui
+ * Serving Flask app 'movies'
+ * Debug mode: on
+ * Serving Flask app 'showtimes'
+ * Debug mode: on
+ * Serving Flask app 'bookings'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.23:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.23:5002
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://10.0.0.23:5003
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Serving Flask app 'ui'
+ * Debug mode: on
+ * Serving Flask app 'user'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.23:5004
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.23:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger is active!
+ * Debugger is active!
+ * Debugger PIN: 125-176-570
+ * Debugger PIN: 125-176-570
+ * Debugger PIN: 125-176-570
+WARNING:werkzeug: * Debugger is active!
+ * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 125-176-570
+ * Debugger PIN: 125-176-570
+make: *** [makefile:35: run-all] Terminated
