@@ -1,0 +1,34 @@
+name: Run Microservices Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
+
+      - name: Run services in background
+        run: |
+          python3 -m services.movies &
+          python3 -m services.showtimes &
+          python3 -m services.bookings &
+          python3 -m services.user &
+          sleep 5  # wait for services to start
+
+      - name: Run tests
+        run: python3 -m pytest tests/
