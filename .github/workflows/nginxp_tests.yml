@@ -20,12 +20,12 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-	  cd microservices-python-app
+	  cd nginx_final_project/microservices-python-app
           python3 -m pip install -r requirements.txt
 
       - name: Run services in background
         run: |
-	  cd microservices-python-app
+	  cd nginx_final_project/microservices-python-app
           python3 -m services.movies &
           python3 -m services.showtimes &
           python3 -m services.bookings &
@@ -34,5 +34,5 @@ jobs:
 
       - name: Run tests
         run: |
-	  cd microservices-python-app
+	  cd nginx_final_project/microservices-python-app
 	  python3 -m pytest tests/
