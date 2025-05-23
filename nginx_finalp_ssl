@@ -1,0 +1,92 @@
+server {
+    listen 80;
+    server_name movie_theater.local;
+
+    # Redirect all HTTP requests to HTTPS
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name movie_theater.local;
+    
+    ssl_certificate /etc/nginx/ssl/selfsigned.crt;
+    ssl_certificate_key /etc/nginx/ssl/selfsigned.key;
+
+    error_page 403 /403.html;
+
+    location = /403.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+
+
+    location /movies/ {
+        proxy_pass http://movies_backend/movies;
+	add_header X-Handled-By $upstream_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+	deny 192.168.56.0/24;
+        allow all;
+        proxy_pass http://localhost:5004;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location /showtimes/ {
+	proxy_cache showtimes_cache;
+	proxy_cache_valid 200 302 30s;
+	add_header  Cache-Control "public, max-age=30";
+	add_header X-Cache $upstream_cache_status;	
+
+        proxy_pass http://showtimes_backend/showtimes;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+	
+	error_page 502 503 504 = @showtimes_fallback;
+    }
+
+    location @showtimes_fallback {
+	default_type text/html;
+	    return 200 '
+	    <html>
+	      <head><title>Service Unavailable</title></head>
+	      <body>
+		<h1>Showtimes Service Temporarily Unavailable</h1>
+		<p>Please try again later.</p>
+	      </body>
+	    </html>';
+    }
+
+    location /bookings/ {
+        proxy_pass http://localhost:5003/bookings;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /users/ {
+        proxy_pass http://localhost:5000/users;
+
+        limit_req zone=users_limit burst=10 nodelay;
+        error_page 503 = @ratelimit_error;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location @ratelimit_error {
+        access_log /var/log/nginx/rate_limited.log ratelimited;
+        return 429 "Too Many Requests\n";
+    }
+}
