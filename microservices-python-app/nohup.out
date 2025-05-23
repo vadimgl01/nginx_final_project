@@ -1756,3 +1756,159 @@ FLASK_APP=services.showtimes flask run --port=5003
 [33mPress CTRL+C to quit[0m
 127.0.0.1 - - [23/May/2025 17:22:37] "GET /showtimes HTTP/1.0" 200 -
 127.0.0.1 - - [23/May/2025 17:24:30] "GET /showtimes HTTP/1.0" 200 -
+python3 -m services.movies & \
+python3 -m services.showtimes & \
+python3 -m services.bookings & \
+python3 -m services.user & \
+python3 -m services.ui
+ * Serving Flask app 'showtimes'
+ * Debug mode: on
+ * Serving Flask app 'bookings'
+ * Debug mode: on
+Address already in use
+Port 5003 is in use by another program. Either identify and stop that program, or start the server with a different port.
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.23:5002
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Serving Flask app 'movies'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.23:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Serving Flask app 'ui'
+ * Debug mode: on
+ * Serving Flask app 'user'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.23:5004
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.23:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 733-232-427
+ * Debugger is active!
+ * Debugger PIN: 733-232-427
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 733-232-427
+ * Debugger is active!
+ * Debugger PIN: 733-232-427
+127.0.0.1 - - [23/May/2025 17:32:31] "[33mGET /bookings/chris_rivers HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:32:31] "[33mGET /bookings/jim_the_duck_guy HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/720d006c-3a57-4b6a-b18f-9b713b073f3c HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/a8034f44-aee4-44cf-b32c-74cf452aaaae HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/96798c08-d19b-4986-a05d-7da856efb697 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/267eedb8-0f5d-42d5-8f43-72426b9fb3e6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/7daf7208-be4d-4944-a3ae-c1c2f516f3e6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/276c79ec-a26a-40a6-b3d3-fb242a5947b6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /movies/39ab85e5-5e8e-4dc5-afea-65dc368bd7ab HTTP/1.1" 200 -
+[2025-05-23 17:32:31,658] WARNING in movies: Movie b18f not found
+127.0.0.1 - - [23/May/2025 17:32:31] "[33mGET /movies/b18f HTTP/1.1[0m" 404 -
+[2025-05-23 17:32:31,660] WARNING in showtimes: No showtimes found for date 20490101
+127.0.0.1 - - [23/May/2025 17:32:31] "[33mGET /showtimes/20490101 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151130 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151201 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151202 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151203 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151204 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /showtimes/20151205 HTTP/1.1" 200 -
+[2025-05-23 17:32:31,669] WARNING in user: User jim_the_duck_guy not found
+127.0.0.1 - - [23/May/2025 17:32:31] "[33mGET /users/jim_the_duck_guy HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/chris_rivers HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/peter_curley HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/garret_heaton HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/michael_scott HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/jim_halpert HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/pam_beesly HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:32:31] "GET /users/dwight_schrute HTTP/1.1" 200 -
+make: *** [makefile:35: run-all] Terminated
+python3 -m services.movies & \
+python3 -m services.showtimes & \
+python3 -m services.bookings & \
+python3 -m services.user & \
+python3 -m services.ui
+ * Serving Flask app 'showtimes'
+ * Debug mode: on
+ * Serving Flask app 'bookings'
+ * Debug mode: on
+ * Serving Flask app 'movies'
+ * Debug mode: on
+Address already in use
+Port 5003 is in use by another program. Either identify and stop that program, or start the server with a different port.
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.23:5002
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.0.0.23:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Serving Flask app 'ui'
+ * Debug mode: on
+ * Serving Flask app 'user'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://10.0.0.23:5004
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.0.0.23:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger is active!
+ * Debugger PIN: 733-232-427
+ * Debugger PIN: 733-232-427
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 733-232-427
+ * Debugger is active!
+ * Debugger PIN: 733-232-427
+127.0.0.1 - - [23/May/2025 17:34:08] "[33mGET /bookings/chris_rivers HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:34:08] "[33mGET /bookings/jim_the_duck_guy HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/720d006c-3a57-4b6a-b18f-9b713b073f3c HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/a8034f44-aee4-44cf-b32c-74cf452aaaae HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/96798c08-d19b-4986-a05d-7da856efb697 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/267eedb8-0f5d-42d5-8f43-72426b9fb3e6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/7daf7208-be4d-4944-a3ae-c1c2f516f3e6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/276c79ec-a26a-40a6-b3d3-fb242a5947b6 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /movies/39ab85e5-5e8e-4dc5-afea-65dc368bd7ab HTTP/1.1" 200 -
+[2025-05-23 17:34:08,137] WARNING in movies: Movie b18f not found
+127.0.0.1 - - [23/May/2025 17:34:08] "[33mGET /movies/b18f HTTP/1.1[0m" 404 -
+[2025-05-23 17:34:08,139] WARNING in showtimes: No showtimes found for date 20490101
+127.0.0.1 - - [23/May/2025 17:34:08] "[33mGET /showtimes/20490101 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151130 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151201 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151202 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151203 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151204 HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /showtimes/20151205 HTTP/1.1" 200 -
+[2025-05-23 17:34:08,151] WARNING in user: User jim_the_duck_guy not found
+127.0.0.1 - - [23/May/2025 17:34:08] "[33mGET /users/jim_the_duck_guy HTTP/1.1[0m" 404 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/chris_rivers HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/peter_curley HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/garret_heaton HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/michael_scott HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/jim_halpert HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/pam_beesly HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2025 17:34:08] "GET /users/dwight_schrute HTTP/1.1" 200 -
+make: *** [makefile:35: run-all] Terminated
